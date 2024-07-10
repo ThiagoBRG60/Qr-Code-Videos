@@ -9,6 +9,7 @@ function switchTheme() {
    themeButton.classList.toggle("switch-theme");
    themeButton.firstElementChild.classList.toggle("fa-moon")
    contactForm.classList.toggle("switch-theme");
+   themeButton.nextElementSibling.classList.toggle("switch-theme");
    if (isDarkMode) {
       contactForm.firstElementChild.src = "./assets/email-light.png"
    }else {
