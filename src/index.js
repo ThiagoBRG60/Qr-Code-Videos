@@ -6,9 +6,9 @@ function getQueryParam(param) {
 const videoId = getQueryParam('video');
 
 const videoSources = {
-   'video1': '../assets/videos/video1.mp4',
-   'video2': '../assets/videos/video2.mp4',
-   'video3': '../assets/videos/video3.mp4'
+   'video1': './assets/videos/video1.mp4',
+   'video2': './assets/videos/video2.mp4',
+   'video3': './assets/videos/video3.mp4'
 }
 
 /* change the themes */
