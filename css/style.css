@@ -1,0 +1,220 @@
+:root {
+   --background-main: #FAF8ED;
+   --highlights: #F66F4D;
+   --white: #FFFFFF;
+   --background-dark: #1A1A1A;
+   --main-dark: #282828;
+   --secondary-dark: #CCCCCC;
+}
+body {
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: url(../assets/background-light.svg) no-repeat var(--background-main);
+   background-size: cover;
+   padding: 0 10px;
+   transition: 0.3s;
+}
+.flex {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.transform {
+   transform: translate(-50%, -50%);
+}
+.theme-mode {
+   justify-content: flex-start;
+   width: 100px;
+   height: 30px;
+   padding: 3px 5px;
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   background-color: transparent;
+   border: 2px solid var(--highlights);
+   border-radius: 50px;
+   cursor: pointer;
+}
+.theme-mode i {
+   width: 50%;
+   height: 100%;
+   font-size: 14px;
+   border-radius: inherit;
+   background-color: var(--highlights);
+   color: var(--white);
+   transition: 0.3s;
+}
+.video-player {
+   flex-direction: column;
+   gap: 20px;
+   transition: 1s;
+}
+.video-player.closed {
+   opacity: 0;
+}
+.close-button {
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+}
+.close-button button {
+   padding: 10px 20px;
+   border-radius: 50px;
+   border: 0;
+   background-color: #f66f4df6;
+   color: var(--white);
+   font-weight: 700;
+   font-size: 16px;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.video-player button:hover {
+   transform: scale(1.1);
+}
+.video-player button:active {
+   transform: scale(0.9);
+}
+.video-container {
+   width: 100%;
+   height: 400px;
+   max-width: 800px;
+   border-radius: 20px;
+   border: 5px solid transparent; 
+   background-image: linear-gradient(var(--main-dark), var(--main-dark)), linear-gradient(to right, #1a1a1a, #282828);
+   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5), 0px 6px 30px rgba(0, 0, 0, 0.5);
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+   position: relative;
+   overflow: hidden;
+}
+.video-container::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(to bottom right, rgba(145, 94, 255, 0.2), rgba(40, 40, 40, 0.2));
+}
+.video-container video {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+.video-controls {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   position: relative;
+}
+.video-controls i {
+   width: 60px;
+   height: 60px;
+   font-size: 30px;
+   border-radius: 50%;
+   background-color: var(--highlights);
+   color: var(--white);
+   cursor: pointer;
+   transition: 0.3s;
+   position: relative;
+   z-index: 1;
+}
+.video-controls i:hover {
+   transform: scale(1.1);
+}
+.video-controls i:active {
+   transform: scale(0.9);
+}
+
+/* links section */
+
+.links ul {
+   display: none;
+   opacity: 0;
+   padding: 50% 5vw;
+   flex-direction: column;
+   gap: 20px;
+   border-radius: 20px;
+   border: 2px solid var(--highlights);
+   position: relative;
+   background: url(../assets/links-light.svg) no-repeat;
+   background-size: cover;
+   overflow: hidden;
+   transition: 0.3s;
+}
+.links ul.opened {
+   opacity: 1;
+   animation: growLinks 0.8s;
+}
+@keyframes growLinks {
+   from {
+      transform: scale(0.5);
+   }to {
+      transform: scale(1);
+   }
+}
+.links ul::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #ffffff33;
+   filter: blur(1px);
+   z-index: -1;
+}
+.links ul li {
+   display: flex;
+}
+.links ul li a {
+   width: 250px;
+   height: 50px;
+   text-align: center;
+   padding: 10px 60px;
+   border-radius: 10px;
+   background-color: var(--highlights);
+   cursor: pointer;
+   transition: 0.3s;
+   color: var(--white);
+   font-size: 18px;
+   user-select: none;
+}
+.links ul li a:hover {
+   transform: scale(1.05);
+}
+.links ul li a:active {
+   transform: scale(0.9);
+}
+
+/* Dark mode styles */
+
+body.switch-theme {
+   background: url(../assets/background-dark.svg) no-repeat var(--background-dark);
+   background-size: cover;
+}
+.theme-mode.switch-theme {
+   border: 2px solid var(--main-dark);
+}
+.theme-mode.switch-theme i {
+   transform: translateX(100%);
+   background-color: var(--main-dark);
+}
+.close-button button.switch-theme, .video-controls i.switch-theme {
+   background-color: var(--main-dark);
+   color: var(--secondary-dark);
+}
+.video-controls i:last-of-type.switch-theme ~ .volume-slider {
+   background-color: #28282873;
+}
+.links ul.switch-theme {
+   border: 2px solid var(--background-dark);
+   background: url(../assets/links-dark.svg) no-repeat;
+   background-size: cover;
+}
+.links ul li a.switch-theme {
+   background-color: var(--main-dark);
+   color: var(--secondary-dark);
+}
